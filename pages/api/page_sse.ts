@@ -1,5 +1,6 @@
+import { NextApiRequest, NextApiResponse } from "next";
 // pages/api/sse
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   res.writeHead(200, {
     Connection: "keep-alive",
     "Content-Encoding": "none",
