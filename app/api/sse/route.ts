@@ -1,6 +1,7 @@
 // import type { NextApiRequest, NextApiResponse } from "next";
 
-import { stream } from "@/app/serverActions";
+// import { stream } from "@/app/serverActions";
+import { stream } from "@/app/shared";
 import { NextResponse } from "next/server";
 // export const delay = (ms: number) =>
 //   new Promise<void>((resolve) => setTimeout(resolve, ms));
@@ -32,22 +33,18 @@ export const runtime = "edge";
 // }
 
 export async function GET() {
-  const stream = new TransformStream();
-  const writer = stream.writable.getWriter();
-  const encoder = new TextEncoder();
-
   // writeMessage(writer, encoder, {
   //   event: "some-event",
   // });
 
-  const event = "hello-event";
-  const data = {
-    id: 112,
-  };
-
-  writer.write(
-    encoder.encode(`event: ${event}\ndata: ${JSON.stringify({ data })}\n\n`),
-  ); // <- the format here is important!
+  // const event = "hello-event";
+  // const data = {
+  //   id: 112,
+  // };
+  //
+  // writer.write(
+  //   encoder.encode(`event: ${event}\ndata: ${JSON.stringify({ data })}\n\n`),
+  // ); // <- the format here is important!
   // const resp = new EventSource("https://next-app-sse.vercel.app/api/sse");
   // resp.onmessage = async (e) => {
   //   await writer.write(encoder.encode(`event: message\ndata: ${e.data}\n\n`));

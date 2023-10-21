@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { stream } from "./serverActions";
+// import { stream } from "./serverActions";
+import { writeEvent } from "./shared";
 
 let count = 0;
 
@@ -9,15 +10,17 @@ let count = 0;
 //   revalidatePath("/");
 // });
 
-stream.on("myEventName", (count) => {
-  console.log("count from event emitter", count);
-});
+// stream.on("myEventName", (count) => {
+//   console.log("count from event emitter", count);
+// });
 
 async function serverAction() {
   "use server";
 
+  writeEvent("increase", { count: count++ });
   // stream.emit("increase", ++count);
-  stream.emit("myEventName", ++count);
+  // stream.emit("myEventName", ++count);
+
   // asyncLocalStorage.run(count, () => {
   //   count = count + 1;
   //   setImmediate(
