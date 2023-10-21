@@ -3,7 +3,6 @@ import React from "react";
 
 export default function SSE() {
   const eventSource = new EventSource(`/api/sse`);
-
   React.useEffect(() => {
     eventSource.addEventListener("some-event", (e) => {
       console.log(e.data);

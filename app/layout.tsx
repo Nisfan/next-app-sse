@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import SSE from "./SSE";
+import dynamic from "next/dynamic";
+
+const SSE = dynamic(() => import("./SSE"), {
+  ssr: false,
+});
 
 const inter = Inter({ subsets: ["latin"] });
 
