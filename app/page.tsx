@@ -1,5 +1,25 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from "next/image";
+import styles from "./page.module.css";
+import { stream } from "./serverActions";
+
+let count = 0;
+
+// ee.on("increase", (count) => {
+//   console.log("count is increased to", count);
+//   revalidatePath("/");
+// });
+
+async function serverAction() {
+  "use server";
+
+  // stream.emit("increase", ++count);
+  stream.emit("channel", "myEventName", ++count);
+  // asyncLocalStorage.run(count, () => {
+  //   count = count + 1;
+  //   setImmediate(
+  // });
+  return { count };
+}
 
 export default function Home() {
   return (
@@ -15,7 +35,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -27,6 +47,11 @@ export default function Home() {
           </a>
         </div>
       </div>
+
+      <form action={serverAction}>
+        Count is {count}
+        <button>Increase</button>
+      </form>
 
       <div className={styles.center}>
         <Image
@@ -91,5 +116,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
