@@ -14,21 +14,21 @@ export async function GET() {
   let responseStream = new TransformStream();
   const writer = responseStream.writable.getWriter();
   const encoder = new TextEncoder();
-
-  console.log("listening to events");
-  // let counter = 0;
-
-  const eventSource = new EventSource(`/api/sse`);
-  eventSource.dispatchEvent;
-  stream.on("channel", function (event, data) {
-    //res.write(JSON.stringify({ counter: data })); // NOTE: this DOES NOT work
-    console.log("event", event);
-    console.log("event.data", data);
-
-    res.write(
-      `event: ${event}\ndata: ${JSON.stringify({ counter: data })}\n\n`,
-    ); // <- the format here is important!
-  });
+  //
+  // console.log("listening to events");
+  // // let counter = 0;
+  //
+  // const eventSource = new EventSource(`/api/sse`);
+  // eventSource.dispatchEvent;
+  // stream.on("channel", function (event, data) {
+  //   //res.write(JSON.stringify({ counter: data })); // NOTE: this DOES NOT work
+  //   console.log("event", event);
+  //   console.log("event.data", data);
+  //
+  //   res.write(
+  //     `event: ${event}\ndata: ${JSON.stringify({ counter: data })}\n\n`,
+  //   ); // <- the format here is important!
+  // });
 
   // for (let i = 0; i < 10; ++i) {
   //   stream.emit("channel", "myEventName", counter); // the event name here must be the same as in the EventSource in frontend
