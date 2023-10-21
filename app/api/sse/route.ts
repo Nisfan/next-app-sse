@@ -4,7 +4,8 @@ import { stream } from "@/app/serverActions";
 import { NextResponse } from "next/server";
 // export const delay = (ms: number) =>
 //   new Promise<void>((resolve) => setTimeout(resolve, ms));
-
+export const runtime = "edge";
+// This is required to enable streaming
 export const dynamic = "force-dynamic";
 // export const runtime = "edge"; // 'nodejs' (default) | 'edge'
 function writeMessage(
