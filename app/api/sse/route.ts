@@ -7,29 +7,29 @@ import { NextResponse } from "next/server";
 export const runtime = "edge";
 
 // This is required to enable streaming
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 // export const runtime = "edge"; // 'nodejs' (default) | 'edge'
-function writeMessage(
-  writer: WritableStreamDefaultWriter,
-  encoder: TextEncoder,
-  message: any,
-): void {
-  if (message.comment) {
-    void writer.write(encoder.encode(`: ${message.comment}\n`));
-  }
-  if (message.event) {
-    void writer.write(encoder.encode(`event: ${message.event}\n`));
-  }
-  if (message.id) {
-    void writer.write(encoder.encode(`id: ${message.id}\n`));
-  }
-  if (message.retry) {
-    void writer.write(encoder.encode(`retry: ${message.retry}\n`));
-  }
-  // if (message.data) {
-  //   void writer.write(encoder.encode(toDataString(message.data)));
-  // }
-}
+// function writeMessage(
+//   writer: WritableStreamDefaultWriter,
+//   encoder: TextEncoder,
+//   message: any,
+// ): void {
+//   if (message.comment) {
+//     void writer.write(encoder.encode(`: ${message.comment}\n`));
+//   }
+//   if (message.event) {
+//     void writer.write(encoder.encode(`event: ${message.event}\n`));
+//   }
+//   if (message.id) {
+//     void writer.write(encoder.encode(`id: ${message.id}\n`));
+//   }
+//   if (message.retry) {
+//     void writer.write(encoder.encode(`retry: ${message.retry}\n`));
+//   }
+//   // if (message.data) {
+//   //   void writer.write(encoder.encode(toDataString(message.data)));
+//   // }
+// }
 
 export async function GET() {
   const stream = new TransformStream();
