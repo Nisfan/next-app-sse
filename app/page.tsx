@@ -9,11 +9,15 @@ let count = 0;
 //   revalidatePath("/");
 // });
 
+stream.on("myEventName", (count) => {
+  console.log("count from event emitter", count);
+});
+
 async function serverAction() {
   "use server";
 
   // stream.emit("increase", ++count);
-  stream.emit("channel", "myEventName", ++count);
+  stream.emit("myEventName", ++count);
   // asyncLocalStorage.run(count, () => {
   //   count = count + 1;
   //   setImmediate(
