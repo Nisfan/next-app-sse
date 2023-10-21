@@ -5,7 +5,7 @@ import { useTransition } from "react";
 
 export default function SSE() {
   React.useEffect(() => {
-    const eventSource = new EventSource(`/api/sse`, {
+    const eventSource = new EventSource(`/api/page_sse`, {
       withCredentials: true,
     });
     eventSource.onopen = () => {

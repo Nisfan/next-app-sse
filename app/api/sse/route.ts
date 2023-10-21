@@ -12,16 +12,16 @@ export async function GET() {
   const writer = responseStream.writable.getWriter();
   const encoder = new TextEncoder();
 
-  const resp = new EventSource("https://next-app-sse.vercel.app/api/sse");
-  resp.onmessage = async (e) => {
-    await writer.write(encoder.encode(`event: message\ndata: ${e.data}\n\n`));
-  };
-
-  resp.onerror = async () => {
-    resp.close();
-    await writer.close();
-  };
-
+  // const resp = new EventSource("https://next-app-sse.vercel.app/api/sse");
+  // resp.onmessage = async (e) => {
+  //   await writer.write(encoder.encode(`event: message\ndata: ${e.data}\n\n`));
+  // };
+  //
+  // resp.onerror = async () => {
+  //   resp.close();
+  //   await writer.close();
+  // };
+  //
   return new Response(responseStream.readable, {
     headers: {
       "Content-Type": "text/event-stream",
