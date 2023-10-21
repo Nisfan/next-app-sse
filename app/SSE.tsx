@@ -22,5 +22,5 @@ export default function SSE() {
     };
   }, []);
 
-  return null;
+  return <div>SSE</div>;
 }
