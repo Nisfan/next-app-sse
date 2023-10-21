@@ -4,7 +4,7 @@ import { stream } from "@/app/serverActions";
 // export const delay = (ms: number) =>
 //   new Promise<void>((resolve) => setTimeout(resolve, ms));
 
-// export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 // export const runtime = "edge"; // 'nodejs' (default) | 'edge'
 
 export async function GET() {
