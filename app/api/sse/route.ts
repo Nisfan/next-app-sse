@@ -40,7 +40,7 @@ export async function GET() {
   //   event: "some-event",
   // });
 
-  const event = "some-event";
+  const event = "hello-event";
   const data = {
     id: 112,
   };
