@@ -18,15 +18,15 @@ export async function GET() {
   console.log("listening to events");
   // let counter = 0;
 
+  const eventSource = new EventSource(`/api/sse`);
+  eventSource.dispatchEvent;
   stream.on("channel", function (event, data) {
     //res.write(JSON.stringify({ counter: data })); // NOTE: this DOES NOT work
     console.log("event", event);
     console.log("event.data", data);
 
-    writer.write(
-      encoder.encode(
-        `event: ${event}\ndata: ${JSON.stringify({ counter: data })}\n\n`,
-      ),
+    res.write(
+      `event: ${event}\ndata: ${JSON.stringify({ counter: data })}\n\n`,
     ); // <- the format here is important!
   });
 
@@ -40,6 +40,7 @@ export async function GET() {
     headers: {
       "Content-Type": "text/event-stream",
       "Cache-Control": "no-cache, no-transform",
+      Connection: "keep-alive",
     },
   });
   // res.end("done\n");
